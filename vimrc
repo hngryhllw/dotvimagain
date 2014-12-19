@@ -17,9 +17,9 @@ autocmd BufEnter *.m compiler mlint
 
 " Arduino stuff
 "Default: /Applications/Arduino.app/Contents/Resources/Java
-"let g:vim_arduino_library_path = /Applications/Arduino.app/Contents/Resources/Java
+let g:vim_arduino_library_path = "/Applications/Arduino.app/Contents/Resources/Java"
 "Default: result of `$(ls /dev/tty.* | grep usb)`
-"let g:vim_arduino_serial_port = /my/serial/port
+let g:vim_arduino_serial_port = "/dev/tty.usbmodem1421"
 
 " YouCompleteMe  stuff
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_config.py"

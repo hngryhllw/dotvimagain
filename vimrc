@@ -8,8 +8,24 @@ call pathogen#helptags()
 "colorscheme jellybeans
 colorscheme molokai
 "colorscheme solarized
-:set background=dark
+"let g:solarized_termcolors=256
+set background=dark
 let g:rehash256=1
+
+" NERDTree Stuff
+nmap <leader>d :NERDTreeToggle<CR>
+
+" Let NERDComplete and Eclim play nicely
+let g:EclimCompletionMethod = 'omnifunc'
+
+" Window switching 
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+
+" delimateMate Stuff
+let delimitMate_expand_cr = 1
 
 " Matlab Stuff
 source $VIMRUNTIME/macros/matchit.vim

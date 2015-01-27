@@ -43,9 +43,9 @@ filetype plugin on
 set expandtab
 
 " Settings for avoiding tabs in code.
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=3
+set softtabstop=3
+set tabstop=3
 
 " Show cursor position
 :set ruler

@@ -40,3 +40,9 @@
 [submodule "bundle/indentLine"]
 	path = bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "bundle/vim-arduino-ino"]
+	path = bundle/vim-arduino-ino
+	url = https://github.com/jplaut/vim-arduino-ino.git
+[submodule "bundle/vimoutliner"]
+	path = bundle/vimoutliner
+	url = https://github.com/vimoutliner/vimoutliner.git

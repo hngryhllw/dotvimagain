@@ -4,13 +4,27 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " *** Color Scheme Stuff *** "
+
+" Enable syntax highlighting
+:syntax on
+
 "colorscheme vividchalk
 "colorscheme jellybeans
-colorscheme molokai
-"colorscheme solarized
+"colorscheme molokai
 "let g:solarized_termcolors=256
 set background=dark
-let g:rehash256=1
+colorscheme solarized
+"let g:rehash256=1
+
+" function to switch background colors
+func! SolarD()
+   set background=dark
+endfu
+com! SOLARD call SolarD()
+func! SolarL()
+   set background=light
+endfu
+com! SOLARL call SolarL()
 
 " NERDTree Stuff
 nmap <leader>d :NERDTreeToggle<CR>
@@ -24,18 +38,32 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
+" Word processing
+" http://www.drbunsen.org/writing-in-vim/
+func! WordProcessorMode() 
+   setlocal formatoptions=1 
+   setlocal noexpandtab 
+   map j gj 
+   map k gk
+   setlocal spell spelllang=en_us 
+   "set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+   set complete+=s
+   set formatprg=par
+   setlocal wrap 
+   setlocal linebreak 
+endfu 
+com! WP call WordProcessorMode()
+
 " delimateMate Stuff
 let delimitMate_expand_cr = 1
 
 " Matlab Stuff
-source $VIMRUNTIME/macros/matchit.vim
+"source $VIMRUNTIME/macros/matchit.vim
 autocmd BufEnter *.m compiler mlint
 
 " Arduino stuff
-"Default: /Applications/Arduino.app/Contents/Resources/Java
-let g:vim_arduino_library_path = "/Applications/Arduino.app/Contents/Resources/Java"
-"Default: result of `$(ls /dev/tty.* | grep usb)`
-let g:vim_arduino_serial_port = "/dev/tty.usbmodem1421"
+"let g:vim_arduino_library_path = "/Applications/Arduino.app/Contents/Resources/Java"
+"let g:vim_arduino_serial_port = "/dev/tty.usbmodem1411"
 
 " YouCompleteMe  stuff
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_config.py"
@@ -69,8 +97,6 @@ set tabstop=3
 " Show line numbers
 :set number
 
-" Enable syntax highlighting
-:syntax on
 
 " Backspace through everything, like most programs
 set backspace=indent,eol,start
@@ -105,8 +131,8 @@ nnoremap <F4> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif 
 :map <F8> :tabn<CR>                     "
 
 " Fix some typos when exiting. cmap maps in command mode.
-:cmap Q q
-:cmap W w
+"":cmap Q q
+"":cmap W w
 
 " Make files scroll together during a diff
 :set scrollbind

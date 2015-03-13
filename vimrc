@@ -1,20 +1,24 @@
-" Adds pathogen pluggin manager compatability
+""""""""""""""""""""""""""""""""""""""""
+" PATHOGEN
+""""""""""""""""""""""""""""""""""""""""
 :set nocp
 call pathogen#infect()
 call pathogen#helptags()
+:Helptags
+filetype plugin on
 
-" *** Color Scheme Stuff *** "
-
+""""""""""""""""""""""""""""""""""""""""
+" COLOR SETTINGS
+""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 :syntax on
+set background=dark
 
+" CHOSE A COLOR HERE
 "colorscheme vividchalk
 "colorscheme jellybeans
 "colorscheme molokai
-"let g:solarized_termcolors=256
-set background=dark
 colorscheme solarized
-"let g:rehash256=1
 
 " function to switch background colors
 func! SolarD()
@@ -26,20 +30,50 @@ func! SolarL()
 endfu
 com! SOLARL call SolarL()
 
-" NERDTree Stuff
+""""""""""""""""""""""""""""""""""""""""
+" PLUGIN SPECIFIC
+""""""""""""""""""""""""""""""""""""""""
+" NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
+
+" vimoutliner stuff
+filetype plugin indent on
 
 " Let NERDComplete and Eclim play nicely
 let g:EclimCompletionMethod = 'omnifunc'
 
+" delimateMate
+let delimitMate_expand_cr = 1
+
+" Matlab
+"source $VIMRUNTIME/macros/matchit.vim
+autocmd BufEnter *.m compiler mlint
+
+" Arduino
+let g:vim_arduino_library_path = "/Applications/Arduino.app/Contents/Resources/Java"
+let g:vim_arduino_serial_port = "/dev/tty.usbmodem1411"
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_config.py"
+
+" Airline
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+""""""""""""""""""""""""""""""""""""""""
+" KEY MAPPINGS
+""""""""""""""""""""""""""""""""""""""""
 " Window switching 
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
-" Word processing
-" http://www.drbunsen.org/writing-in-vim/
+" Map jj as the esc out of insert mode
+:imap jj <Esc>
+
+" Word processing http://www.drbunsen.org/writing-in-vim/
 func! WordProcessorMode() 
    setlocal formatoptions=1 
    setlocal noexpandtab 
@@ -54,52 +88,47 @@ func! WordProcessorMode()
 endfu 
 com! WP call WordProcessorMode()
 
-" delimateMate Stuff
-let delimitMate_expand_cr = 1
+" Backspace through everything, like most programs
+set backspace=indent,eol,start
 
-" Matlab Stuff
-"source $VIMRUNTIME/macros/matchit.vim
-autocmd BufEnter *.m compiler mlint
-
-" Arduino stuff
-"let g:vim_arduino_library_path = "/Applications/Arduino.app/Contents/Resources/Java"
-"let g:vim_arduino_serial_port = "/dev/tty.usbmodem1411"
-
-" YouCompleteMe  stuff
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_config.py"
-
-" Airline plugin stuff
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" Miscellaneous for plugins
-:Helptags
-filetype plugin on
-
+""""""""""""""""""""""""""""""""""""""""
+" TAB AND INDENTATION
+""""""""""""""""""""""""""""""""""""""""
+" Settings for avoiding tabs in code.
+set expandtab
+set shiftwidth=3              " Spaces >> shifts code
+set softtabstop=3             " Num spaces tab key creates
+set tabstop=3                 " Length of tab
+"
+" Replace tabs for filetypes where they're needed
+:autocmd BufNewFile,BufRead [Mm]akefile* set noexpandtab softtabstop=0
+:autocmd BufNewFile,BufRead *.otl set noexpandtab softtabstop=0
+"
 " Automatically match previous indentation level
 :set autoindent
 
 " Automatically indent the cursor when working with C-style syntax
 :set smartindent
 
-" Automatically turn tabs into spaces
-set expandtab
-
-" Settings for avoiding tabs in code.
-set shiftwidth=3
-set softtabstop=3
-set tabstop=3
-
+""""""""""""""""""""""""""""""""""""""""
+" DISPLAY
+""""""""""""""""""""""""""""""""""""""""
 " Show cursor position
 :set ruler
 
 " Show line numbers
 :set number
 
+if exists('+colorcolumn')
+    " Highlight column 81
+    :set colorcolumn=81
 
-" Backspace through everything, like most programs
-set backspace=indent,eol,start
+    " Make the column color blue
+    highlight ColorColumn ctermbg=19
+else
+    " Put a red background on any text that goes beyond 80 characters
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 " left and right arrow keys and h and l can go across lines
 :set whichwrap+=<,>,h,l
@@ -123,24 +152,8 @@ nnoremap <F4> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif 
 " Make searches case insensitive when containing only lowercase letters.
 :set smartcase
 
-" Set the font to Consolas in gvim
-:set guifont=Consolas
-
-" Enable cycling backwards and forwards through tabs with <F7> and <F8>
-:map <F7> :tabp<CR>                     " :map <key> <keystrokes>
-:map <F8> :tabn<CR>                     "
-
-" Fix some typos when exiting. cmap maps in command mode.
-"":cmap Q q
-"":cmap W w
-
 " Make files scroll together during a diff
-:set scrollbind
-
-
-" Make vim turn *off* expandtab for files named Makefile or makefile
-" We need the tab literal
-:autocmd BufNewFile,BufRead [Mm]akefile* set noexpandtab
+"":set scrollbind
 
 " Show matching [] {} ()
 :set showmode
@@ -156,21 +169,4 @@ if v:version > 704
     :set formatoptions+=j
 endif
 
-if exists('+colorcolumn')
-    " Highlight column 81
-    :set colorcolumn=81
-
-    " Make the column color blue
-    highlight ColorColumn ctermbg=19
-else
-    " Put a red background on any text that goes beyond 80 characters
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
-
-" Set the gui background to black. The guifg changes the color of some
-" text, probably anything that isn't picked up by the syntax highlighter.
-highlight Normal guibg=black guifg=white
-
-" Map jj as the esc out of insert mode
-:imap jj <Esc>
 

@@ -46,3 +46,12 @@
 [submodule "bundle/vimoutliner"]
 	path = bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
+[submodule "bundle/tern_for_vim"]
+	path = bundle/tern_for_vim
+	url = https://github.com/marijnh/tern_for_vim.git
+[submodule "bundle/cmus-remote.vim"]
+	path = bundle/cmus-remote.vim
+	url = https://github.com/hyoshida/cmus-remote.vim.git
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

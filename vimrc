@@ -13,12 +13,14 @@ filetype plugin on
 " Enable syntax highlighting
 :syntax on
 set background=dark
+set t_Co=256
 
 " CHOSE A COLOR HERE
 "colorscheme vividchalk
 "colorscheme jellybeans
 "colorscheme molokai
-colorscheme solarized
+colorscheme gruvbox
+"colorscheme solarized
 
 " function to switch background colors
 func! SolarD()
@@ -87,6 +89,12 @@ func! WordProcessorMode()
    setlocal linebreak 
 endfu 
 com! WP call WordProcessorMode()
+
+" cmus functions
+nnoremap <leader>b :call Next()<cr>
+nnoremap <leader>z :call Previous()<cr>
+nnoremap <leader>c :call Pause()<cr>
+nnoremap <leader>p :call Play()<cr>
 
 " Backspace through everything, like most programs
 set backspace=indent,eol,start

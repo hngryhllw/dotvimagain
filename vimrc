@@ -13,7 +13,7 @@ filetype plugin on
 " Enable syntax highlighting
 :syntax on
 set background=dark
-set t_Co=256
+"set t_Co=256
 
 " CHOSE A COLOR HERE
 "colorscheme vividchalk
@@ -21,6 +21,11 @@ set t_Co=256
 "colorscheme molokai
 colorscheme gruvbox
 "colorscheme solarized
+
+" Color settings for tabline
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 " function to switch background colors
 func! SolarD()
@@ -51,17 +56,8 @@ let delimitMate_expand_cr = 1
 "source $VIMRUNTIME/macros/matchit.vim
 autocmd BufEnter *.m compiler mlint
 
-" Arduino
-let g:vim_arduino_library_path = "/Applications/Arduino.app/Contents/Resources/Java"
-let g:vim_arduino_serial_port = "/dev/tty.usbmodem1411"
-
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_config.py"
-
-" Airline
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 
 """"""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS

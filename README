@@ -1,0 +1,24 @@
+Installation:
+
+   git clone git://github.com/hngryhllw/dotvimagain.git ~/.vim
+
+Create symlinks:
+
+   ln -s ~/.vim/vimrc ~/.vimrc
+   ln -s ~/.vim/gvimrc ~/.gvimrc
+
+Switch to the `~/.vim` directory, and fetch submodules:
+
+   cd ~/.vim
+   git submodule init
+   git submodule update
+
+Initialize YouCompleteMe
+   cd ~/.vim/bundle/YouCompleteMe
+   git submodule update --init --recursive
+   ./install.sh --clang-completer
+
+Update vim (for YCM)
+   brew install vim
+	alias vim='/usr/local/bin/vim/'
+	alias vi='/usr/local/bin/vim/'

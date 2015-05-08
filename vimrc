@@ -57,7 +57,7 @@ let delimitMate_expand_cr = 1
 autocmd BufEnter *.m compiler mlint
 
 " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_config.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_config.py"
 
 """"""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS

@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""
 " PATHOGEN
 """"""""""""""""""""""""""""""""""""""""
-:set nocp
+set nocp
 call pathogen#infect()
 call pathogen#helptags()
 :Helptags
@@ -11,9 +11,9 @@ filetype plugin on
 " COLOR SETTINGS
 """"""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-:syntax on
+syntax on
 set background=dark
-"set t_Co=256
+set t_Co=256
 
 " CHOSE A COLOR HERE
 "colorscheme vividchalk
@@ -28,14 +28,14 @@ hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 " function to switch background colors
-func! SolarD()
+func! D()
    set background=dark
 endfu
-com! SOLARD call SolarD()
-func! SolarL()
+com! D call D()
+func! L()
    set background=light
 endfu
-com! SOLARL call SolarL()
+com! L call L()
 
 """"""""""""""""""""""""""""""""""""""""
 " PLUGIN SPECIFIC
@@ -69,22 +69,7 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
 " Map jj as the esc out of insert mode
-:imap jj <Esc>
-
-" Word processing http://www.drbunsen.org/writing-in-vim/
-func! WordProcessorMode() 
-   setlocal formatoptions=1 
-   setlocal noexpandtab 
-   map j gj 
-   map k gk
-   setlocal spell spelllang=en_us 
-   "set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
-   set complete+=s
-   set formatprg=par
-   setlocal wrap 
-   setlocal linebreak 
-endfu 
-com! WP call WordProcessorMode()
+imap jj <Esc>
 
 " cmus functions
 nnoremap <leader>b :call Next()<cr>
@@ -105,27 +90,27 @@ set softtabstop=3             " Num spaces tab key creates
 set tabstop=3                 " Length of tab
 "
 " Replace tabs for filetypes where they're needed
-:autocmd BufNewFile,BufRead [Mm]akefile* set noexpandtab softtabstop=0
-:autocmd BufNewFile,BufRead *.otl set noexpandtab softtabstop=0
+autocmd BufNewFile,BufRead [Mm]akefile* set noexpandtab softtabstop=0
+autocmd BufNewFile,BufRead *.otl set noexpandtab softtabstop=0
 "
 " Automatically match previous indentation level
-:set autoindent
+set autoindent
 
 " Automatically indent the cursor when working with C-style syntax
-:set smartindent
+set smartindent
 
 """"""""""""""""""""""""""""""""""""""""
 " DISPLAY
 """"""""""""""""""""""""""""""""""""""""
 " Show cursor position
-:set ruler
+set ruler
 
 " Show line numbers
-:set number
+set number
 
 if exists('+colorcolumn')
     " Highlight column 81
-    :set colorcolumn=81
+    set colorcolumn=81
 
     " Make the column color blue
     highlight ColorColumn ctermbg=19
@@ -135,42 +120,42 @@ else
 endif
 
 " left and right arrow keys and h and l can go across lines
-:set whichwrap+=<,>,h,l
+set whichwrap+=<,>,h,l
 
 " Turn off line wrapping
-:set nowrap
+set nowrap
 
 " Enable mouse navigation
-:set mouse=a
+set mouse=a
 
 " Highlight search terms as you type
-:set incsearch
+set incsearch
 
 " F4 to toggle search highlight
 let hlstate=0
 nnoremap <F4> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
 
 " Make the smartcase below work
-:set ignorecase
+set ignorecase
 
 " Make searches case insensitive when containing only lowercase letters.
-:set smartcase
+set smartcase
 
 " Make files scroll together during a diff
-"":set scrollbind
+""set scrollbind
 
 " Show matching [] {} ()
-:set showmode
+set showmode
 
 " Automatically insert the comment character when you hit <enter> (r) or o/O (o)
 " in a block comment
-:set formatoptions+=ro 
+set formatoptions+=ro 
 
 " This option is only supported on vim 7.4 and above (technically 7.3.582 or so)
 if v:version > 704
     " When joining two commented lines (J on two selected lines), eliminate 
     " leading characters such as # or // and indentation.
-    :set formatoptions+=j
+    set formatoptions+=j
 endif
 
 

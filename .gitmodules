@@ -52,3 +52,6 @@
 [submodule "bundle/tabline.vim"]
 	path = bundle/tabline.vim
 	url = https://github.com/mkitt/tabline.vim.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git

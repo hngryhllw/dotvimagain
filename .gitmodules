@@ -1,12 +1,6 @@
-[submodule "bundle/matlab.vim"]
-	path = bundle/matlab.vim
-	url = https://github.com/vim-scripts/matlab.vim.git
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "bundle/vim-arduino"]
-	path = bundle/vim-arduino
-	url = https://github.com/tclem/vim-arduino.git
 [submodule "bundle/jellybeans.vim"]
 	path = bundle/jellybeans.vim
 	url = https://github.com/nanotech/jellybeans.vim.git
@@ -25,9 +19,6 @@
 [submodule "bundle/vim-vividchalk"]
 	path = bundle/vim-vividchalk
 	url = https://github.com/tpope/vim-vividchalk.git
-[submodule "bundle/avr.vim"]
-	path = bundle/avr.vim
-	url = https://github.com/vim-scripts/avr.vim.git
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
@@ -43,9 +34,6 @@
 [submodule "bundle/tern_for_vim"]
 	path = bundle/tern_for_vim
 	url = https://github.com/marijnh/tern_for_vim.git
-[submodule "bundle/cmus-remote.vim"]
-	path = bundle/cmus-remote.vim
-	url = https://github.com/hyoshida/cmus-remote.vim.git
 [submodule "bundle/gruvbox"]
 	path = bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
